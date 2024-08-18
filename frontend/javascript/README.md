@@ -401,6 +401,17 @@ function useNum(num) {
     num += 1;
     num = 15;
 }
+// you can also use three dots (...) to accept a variable number of parameters
+// (often called varargs). this must come at the end of the parameters list.
+function useVariable(firstArg, ...restArgs) {
+    // restArgs is a collection - you can pretty much treat it like an array
+    restArgs[0];
+    restArgs[1];
+    restArgs[2];
+    // etc
+}
+// here, firstArg is 0, restArgs[0] is 1, restArgs[1] is 2, etc
+useVariable(0, 1, 2, 3);
 // values are returned with a return statement
 function returnOne() {
     let varToReturn = 1;
