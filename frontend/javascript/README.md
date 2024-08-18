@@ -469,12 +469,24 @@ let greetingObject = {
     greetExcited(name) {
         return `${this.greeting} ${user}!`;
     },
+    // getters and setters have special syntax that make them a bit nicer to use
+    getSetProperty: 0,
+    get getProperty() {
+        return this.getSetProperty;
+    },
+    set setProperty(value) {
+        this.getSetProperty = value;
+    },
 }
 // properties are then accessed by writing the object's name, a dot (.), then
 // the property's name. this is called dot notation.
 greetingObject.greeting === "Hello";
 greetingObject.nestedObject.nestedGreeting === "Hello from the inside";
 greetingObject.greet("Alice") === "Hello Alice.";
+// get and set methods can be accessed as if they were properties
+greetingObject.getProperty === 0;
+greetingObject.setProperty === 1;
+greetingObject.getProperty === 1;
 // you can modify an object outside of its declaration to change, remove, or add
 // properties
 greetingObject.greeting = "Goodbye";
