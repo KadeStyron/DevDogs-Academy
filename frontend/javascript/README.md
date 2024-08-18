@@ -1,7 +1,7 @@
 # JavaScript in a Nutshell
 JavaScript (JS for short) is a dynamically typed, interpreted, multi-paradigm language. It also happens to be the *lingua franca* of the web. All the major browsers can run it to make the webpages they display interactive, and you can even use [some tooling](https://en.wikipedia.org/wiki/Node.js) to run it on servers for back-end services. We'll be using JS extensively in this club to create our front-ends, so it'll serve you well to get familiar with it.
 
-This article is meant to help you hit the ground running quickly. If you're here to review something specific, or you already feel good with your JavaScript abilities, please feel free to aggressively utilize the table of contents (located in the top right corner) to skip to the parts you care about.
+This article is meant to help you hit the ground running quickly. If you're here to review something specific, or you already feel pretty good about your JavaScript abilities, please feel free to aggressively utilize the table of contents (located in the top right corner) to skip to the parts you care about.
 
 If you feel like messing around with the examples given in this article, you can open up a live JavaScript interpreter in your browser to see how things play out.  On Chrome, this can be done with Ctrl+Shift+J (Cmd+Opt+J for macOS). On Firefox, hit Ctrl+Shift+K (Cmd+Opt+K for macOS). Type things in at the bottom of the panel that pops up to run your JS code.
 
@@ -119,6 +119,16 @@ Undefined and null values are kind of special. Undefined is used to indicate tha
 ```js
 undefined
 null
+// operations with null and undefined are weird. you really shouldn't ever have
+// to think about them, but here are some quick examples just for fun:
+// this yields NaN (the floating point value)
+true + undefined
+// this yields the number 1
+true + null
+// the typeof operator should yield a string containing a value's type (e.g.
+// "string", "boolean", etc), but this yields "object" instead of "null" (more
+// on objects later)
+typeof null
 ```
 
 [^other-primitives]: Okay, technically there's also [`bigint`](https://developer.mozilla.org/en-US/docs/Glossary/BigInt) and [`symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), but most readers probably don't need to worry about those.
@@ -249,7 +259,7 @@ if (false) {
 
 // that was a brace-less else statement with an if as its single
 // statement. cool, huh? you can then chain off of that single
-// if statement with another else, an so on
+// if statement with another else, and so on
 if (false) {
     // won't run
 } else if (true) {
@@ -692,8 +702,8 @@ let arrayStringValue = JSON.stringify(arrayToEncode);
 // square brackets ([]) denote arrays, elements are separated by commas (,)
 arrayStringValue === "[false,true,false,true,false,true]";
 
-// JSON.parse goes the other way, turning a JSON string into its JS value
-// whitespace is ignored, so you can make a JSON string as pretty as you want
+// JSON.parse goes the other way, turning a JSON string into its JS value.
+// whitespace is ignored, so you can make a JSON string as pretty as you want.
 let parsed = JSON.parse(`{
     "sillyProperty": "wow this property is so silly",
     "absentProperty": null,
@@ -750,8 +760,8 @@ export function makeACake() {
 // relative to the current file (in this case, 'bakery.js').
 import { cakesMade, makeACake } from "./cake.js"
 
-// after importing, we can use the values just like they were declared in this
-// file
+// after importing, we can use the values just like if they were declared in
+// this file
 let cakeMessage = makeACake();
 console.log(cakeMessage);
 console.log(`Here's how many cakes we've made so far: ${cakesMade}`);
