@@ -401,6 +401,24 @@ function useNum(num) {
     num += 1;
     num = 15;
 }
+// pass parameters when you call the function. here, num gets the value 1
+// inside of useNum's body
+useNum(1);
+// if you omit a parameter when calling a function, its value is `undefined`
+// inside the function. e.g., when we do this, num gets the value `undefined`
+// in useNum's body
+useNum();
+// we can get around this with default parameters, which give a parameter a
+// default value if it isn't passed (or is passed as `undefined`)
+function useNumDefault(num = 0) {
+    // ...
+}
+// default parameters act like any other parameter when passed
+// here, num = 1 in the function body
+useNumDefault(1);
+// but when we don't pass a value, num gets the default value (in this case, 0)
+useNumDefault();
+useNumDefault(undefined);
 // you can also use three dots (...) to accept a variable number of parameters
 // (often called varargs). this must come at the end of the parameters list.
 function useVariable(firstArg, ...restArgs) {
@@ -423,12 +441,6 @@ function returnOne() {
 // e.g. this is true, it looks like 1 === 1 to the interpreter since the
 // returnOne function returned 1
 returnOne() === 1;
-// if you omit a parameter when calling a function, its value is `undefined`
-// inside the function
-function identity(x) {
-    return x;
-}
-identity() === undefined;
 
 // if the interpreter has enough information to name a function itself, you can
 // omit the name from the initial declaration and later refer to it by the
