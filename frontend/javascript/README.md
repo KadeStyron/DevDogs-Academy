@@ -586,7 +586,10 @@ class Animal {
         this.canSwim = canSwim;
     }
 }
+```
 
+Using classes is pretty similar to other object-oriented languages.
+```js
 // you use the constructor to make a new object using the new keyword and the
 // class name
 let whale = new Animal("Whale", "Wooooo...", true);
@@ -596,9 +599,10 @@ whale.name === "Whale";
 whale.canSwim === true;
 // whale.#message === "Wooooo..."; <- not allowed, #message is private
 whale.sayMessage() === "Whale says: Wooooo...";
+```
 
-// classes can extend other classes to represent a more specific type of
-// blueprint
+Classes can also extend other classes to represent a more specific type of blueprint.
+```js
 class Platypus extends Animal {
     // subclasses can add their own methods and properties
     layEggs() {
