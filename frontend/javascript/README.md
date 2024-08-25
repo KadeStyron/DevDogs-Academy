@@ -830,6 +830,77 @@ console.log(`Here's how many cakes we've made so far: ${cakesMade}`);
 ```
 There are a few other ways to import and export things from modules. Consider checking out [MDN's articles on `import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) and [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) if you're hungry for more module-based content.
 
+## Destructuring
+JavaScript provides a very nice way to look inside composite data types called destructuring. Destructuring lets us unpack the contents of things like arrays, objects, and other collections into multiple named variables.
+```js
+// say we have an array like this
+let myArray = ["foo", "bar", "baz"];
+// we can peek into the contents of the array with a destructuring assignment
+let [myFoo, myBar, myBaz] = myArray;
+// myArray hasn't been changed at all, but now we can use myFoo instead of
+// myArray[0], myBar instead of myArray[1], etc
+myFoo === myArray[0];
+myBar === myArray[1];
+myBaz === myArray[2];
+
+// you can also do this with objects. the unpacked variable names have to match
+// the object property names, though.
+let myObj = {
+    message: "bingle",
+    question: "what?",
+};
+let { message, question } = myObj;
+message === "bingle";
+question === "what?";
+```
+
+You can use collection destructuring in a number of places, but we mostly only care about using it in declarations (which we just saw), for-of loops, and function parameters. Here's how we destructure with function parameters.
+```js
+// say we have an array with some values in it
+let array = [1, 2, 3, 4];
+// and a function which uses some of these values
+function addFirstTwo(one, two) {
+    return one + two;
+}
+addFirstTwo(array[0], array[1]) === 3;
+
+// we could instead use a function that destructures the array to get its first
+// two elements
+function addFirstTwoUnpack([ one, two ]) {
+    return one + two;
+}
+addFirstTwoUnpack(array) === 3;
+
+// this also works with objects
+greetWithName(name, greeting) {
+    return greeting + " " + name;
+}
+greetWithName("Alex", "Hi") === "Hi Alex";
+
+function greetWithNameUnpack({ name, greeting }) {
+    return greeting + " " + name;
+}
+greetWithNameUnpack({
+    name: "Alex",
+    greeting: "Hi",
+}); === "Hi Alex";
+```
+
+And for for-of loops, we do something like this.
+```js
+let matrix = [
+    [1, 0]
+    [0, 1]
+];
+
+// this loop prints out:
+// (1, 0)
+// (0, 1)
+for (const [firstCol, secondCol] of matrix) {
+    console.log(`(${firstCol}, ${secondCol})`)
+}
+```
+
 ## More resources
 - https://learnxinyminutes.com/docs/javascript/
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
