@@ -282,11 +282,12 @@ if (false) {
 } else {
     // won't run (last condition was true)
 }
+```
 
-// recall our previous overviews of logical operators and truthy values -
-// they both apply here. the condition just has to be a boolean!
+Recall our previous overviews of logical operators and truthy values. They both apply here, the condition just has to be a Boolean!
+```js
 if (true && false) {
-    // won't run
+    // won't run (true and true is false)
 }
 
 if ("foo") {
