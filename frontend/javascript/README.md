@@ -513,6 +513,8 @@ let emptyObject = {};
 let greetingObject = {
     // properties define values on an object
     greeting: "Hello",
+    // you can use any static string literal as a property name
+    'name with spaces': "Wow that name had spaces in it",
     // nested objects are valid
     nestedObject: {
         nestedGreeting: "Hello from the inside",
@@ -534,10 +536,12 @@ let greetingObject = {
     set setProperty(value) {
         this.getSetProperty = value;
     },
-}
+};
 // properties are then accessed by writing the object's name, a dot (.), then
 // the property's name. this is called dot notation.
 greetingObject.greeting === "Hello";
+// access more complex string names with square brackets ([])
+greetingObject["name with spaces"] === "Wow that name had spaces in it";
 greetingObject.nestedObject.nestedGreeting === "Hello from the inside";
 greetingObject.greet("Alice") === "Hello Alice.";
 // get and set methods can be accessed as if they were properties
