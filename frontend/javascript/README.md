@@ -408,6 +408,10 @@ function sayNi() {
 }
 // you call a function by using its name followed by parenthesis (())
 sayNi();
+```
+
+Functions can also take paramters, values which are passed when the function is called and can be used inside the function's body. These parameters are 'pass by value' with similar rules to Java.
+```js
 // parameters are declared alongside a function inside its parenthesis. these
 // parameters are untyped, like any other variable.
 function useNum(num) {
@@ -445,10 +449,15 @@ function useVariable(firstArg, ...restArgs) {
 }
 // here, firstArg is 0, restArgs[0] is 1, restArgs[1] is 2, etc
 useVariable(0, 1, 2, 3);
-// values are returned with a return statement
+```
+
+Return statements let functions yield a value to the place where they were called.
+```js
 function returnOne() {
     let varToReturn = 1;
     varToReturn += 1;
+    // return statement: this function yields
+    // this computed value
     return varToReturn - 1;
 }
 // the value returned by a function is "slotted in" to the place where the
@@ -456,7 +465,10 @@ function returnOne() {
 // e.g. this is true, it looks like 1 === 1 to the interpreter since the
 // returnOne function returned 1
 returnOne() === 1;
+```
 
+There are also some other ways to declare functions, mainly unnamed functions and lambdas.
+```js
 // if the interpreter has enough information to name a function itself, you can
 // omit the name from the initial declaration and later refer to it by the
 // context-assigned name
