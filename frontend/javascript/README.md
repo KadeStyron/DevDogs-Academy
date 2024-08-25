@@ -369,9 +369,11 @@ while (howMany < 5) {
 }
 message += "times";
 message === "We looped 0 1 2 3 4 times";
+```
 
-// for loops let you declare and use a variable scoped to the loop, usually for
-// iteration. they generally look like `for (initialization; condition; step)`.
+For loops let you declare a variable scoped to the loop, usually for iteration.
+```js
+// for loops generally look like `for (initialization; condition; step)`.
 message = "We looped ";
 for (let howMuch = 0; howMuch < 5; howMuch += 1) {
     message += howMuch + " ";
@@ -389,9 +391,10 @@ message === "We looped 0 1 2 3 4 times";
     }
     message += "times";
 }
+```
 
-// for-of loops are analogous to for-each loops in other languages. they
-// let you loop through collections of things.
+For-of loops are analogous to for-each loops in other languages. They provide a nicer way of looping through collections of things.
+```js
 message = "We've seen elements ";
 let array = [0, 1, 2, 3, 4, 5];
 // trying to change the variable you bind each element to will just change
@@ -399,7 +402,7 @@ let array = [0, 1, 2, 3, 4, 5];
 for (const element of array) {
     message += element + " "
 }
-// message === "We've seen elements 0 1 2 3 4 5 "
+message === "We've seen elements 0 1 2 3 4 5 "
 ```
 
 ### Functions
