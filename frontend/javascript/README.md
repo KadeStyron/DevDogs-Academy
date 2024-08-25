@@ -134,7 +134,7 @@ typeof null
 [^other-primitives]: Okay, technically there's also [`bigint`](https://developer.mozilla.org/en-US/docs/Glossary/BigInt) and [`symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), but most readers probably don't need to worry about those.
 
 ### Variables
-You may from time to time want to store values for later use. You can do this using variables.
+You may from time to time want to store values for later use. You can do this using variables. Variables are declared using `const` and `let`.[^other-decls]
 ```js
 // declares a new variable `variable0` with initial value `undefined`
 let variable0;
@@ -171,6 +171,8 @@ foo = foo + 1;
 foo += 1;
 ```
 You use this operation-then-assign syntax with any of the operations mentioned in the previous section.
+
+[^other-decls]: There are also no-keyword declarations (which are always global-scope) and `var` declarations (which are function-scope). These are included in the language for legacy reasons, and generally should not be used today.
 
 ### Comparisons
 Comparisons let you check whether data structures satisfy some sort of condition.
