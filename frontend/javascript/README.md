@@ -351,6 +351,9 @@ nested[1][0];
 // you can get an array's length using the `.length` property (more on
 // properties in the classes section). this yields 4.
 arr.length;
+// you can append a new element to the end of an array with the Array.push
+// method (more on methods later)
+arr.push(100);
 ```
 
 ### Loops
@@ -900,6 +903,67 @@ for (const [firstCol, secondCol] of matrix) {
     console.log(`(${firstCol}, ${secondCol})`)
 }
 ```
+
+## Functional-style array manipulation
+Working with arrays is a super common part of many programs. Given their ubiquity, developers have come up with some very nice ways to interact with arrays beyond your standard for loop. These take the form of higher order methods, methods that take in other functions as parameters. The most important ones for our purposes are `filter`, and `map`.[^other-array-funcs]
+```js
+// say we have a class that stores information about a person
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = name;
+  }
+}
+
+// let's make an array of people
+let people = [
+    new Person("Alice", 20),
+    new Person("Bob", 36),
+    new Person("Harry", 44),
+    new Person("Sue", 16),
+    new Person("Alex", 10),
+];
+
+// now, imagine that we wanted to get all of the people who are able to vote.
+// a naive approach might be to make an array with a loop and a conditional.
+let votingPeople = [];
+for (const person of people) {
+    if (person.age >= 18) {
+        votingPeople.push(person);
+    }
+}
+
+// this works fine enough, but is a little long-winded. the Array.filter method
+// lets us instead provide a 'checker' function which says either 'yes' (true)
+// or 'no' (false) to each element of the array. the elements we say 'yes' to
+// are added into the new array while the ones we say 'no' to are omitted.
+let filterVotingPeople = people.filter(person => person >= 18);
+// that did the same thing as that whole previous block! much nicer, huh?
+```
+
+Mapping lets us use an element's value to construct a new element.
+```js
+// assume we're using the same Person class from before
+let people = [
+    new Person("Alice", 20),
+    new Person("Bob", 36),
+    new Person("Harry", 44),
+    new Person("Sue", 16),
+    new Person("Alex", 10),
+];
+
+// now imagine that we only want to extract just the names from the array.
+// instead of doing this
+let peopleNames = [];
+for (const person of people) {
+    peopleName.push(person.name);
+}
+
+// we can instead do this to get the same result
+let mapPeopleNames = people.map(person => person.name);
+```
+
+[^other-array-funcs]: There are several other very nice functional array methods out there, but these are the most important ones. See [`Array.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce), [`Array.every()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every), and [`Array.some()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) for more.
 
 ## More resources
 - https://learnxinyminutes.com/docs/javascript/
