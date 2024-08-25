@@ -172,6 +172,19 @@ foo += 1;
 ```
 You use this operation-then-assign syntax with any of the operations mentioned in the previous section.
 
+There is another, even more terse way to do an operation-then-assign for the special cases of incrementing and decrementing by one. If you're familiar with increment and decrement from other C languages, they work pretty much the same in JS. You can use them postfix or prefix, and they act as expressions (i.e. they yield a value). These operators can be hard to read and reason with if used in overly creative ways though, so please be kind to your collaborators and give some thought to maintainability before using them.
+```js
+let baz = 0;
+
+baz++;
+baz === 1;
+
+baz = 0;
+
+baz--;
+baz === -1;
+```
+
 [^other-decls]: There are also no-keyword declarations (which are always global-scope) and `var` declarations (which are function-scope). These are included in the language for legacy reasons, and generally should not be used today.
 
 ### Comparisons
