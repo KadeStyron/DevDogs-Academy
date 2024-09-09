@@ -5,7 +5,7 @@
 
 This tutorial assumes that the readers has basic knowledge of java and the 
 structure of web applications. To learn more about Spring you should view 
-[This Spring article] (#spring). 
+[This Spring article] (#spring). To best learn I would follow along with the code examples.
 
 ## What is Spring Boot
 Spring Boot is built on top of the Spring framework. It's used to set-up, 
@@ -49,9 +49,35 @@ Additional Spring Boot Advantages.
         - MySQL Driver allows java programs to connect to a MySQL database. 
         - There are SO many more. 
     - Select Jar packaging
-    - Select newest Java version.
+    - Select your Java version.
 3. Generate and then extract the zip file.
 4. Open your project with your IDE!
+
+
+## How to implement a REST API
+
+### Starting 
+Go to your SpringBootApplication class. THis should come by default.
+Add @RestController above your class. Then you need to add a rest endpoint. This endpoint can be any method with the annotation @GetMapping above the class.
+
+Your code should look something like this 
+
+'
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+	@GetMapping
+	public String hello() {
+		return "Hello World!";
+	}
+
+}
+'
 
 
 
