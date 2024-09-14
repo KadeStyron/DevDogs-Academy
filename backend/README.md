@@ -39,8 +39,6 @@ Spring Boot makes production-ready applications quickly and efficiently. It prov
 
 > For this demo, I will be keeping everything as the default settings and adding Spring Web.
 
-> For this demo, I will be keeping everything as the default settings and adding Spring Web.
-
 ## How to implement a REST API
 
 ### Starting Your First Local Server!
@@ -71,15 +69,13 @@ Now your server should be ready to run! All you need to do is hit run on your De
 
 We can return more than Strings. We will likely need to provide the frontend with a JSON at some point. This is how to make your Hello World! a JSON.
 
-> In order to do this you need to import `java.util.List`.
-
-`
+```
 	@GetMapping
 	public List<String> hello() {
 		return List.of("Hello", "World!");
 	}
-`
-## Returning a Custom Object
+```
+## Returning an API
 In this example we will create a student class to return.
 
 1. Create a new package for the student class `com.example.demo.student`.
@@ -114,6 +110,40 @@ Replace the "Hello World!" Strings with a new Student.
 ```
 
 Awesome! Your output should look like a JSON of a student object.
+---
+
+## API Layer Class
+
+Inside of using Demo Application create a StudentController.java class inside of the student file.
+Move everything inside the getMapping annotation from DemoApplication to StudentController. Also move the @RestController annotation.  
+
+Additionally add the code `@RequestMapping(path = "api/v1/student")` to try custom paths api calls. 
+
+Finally change hello() to getStudents() since thats the correct nomenclature. 
+
+New StudentController class: 
+
+	```
+    @RestController
+    @RequestMapping(path = "api/v1/student")
+    public class StudentController {
+        @GetMapping
+        public List<Student> getStudents() {
+            return List.of(
+                new Student(
+                    1L, 
+                    "John",
+                    "johnsmith@gmail.com",
+                    LocalDate.of(2005, 1, 10),
+                    19
+                )		
+            );
+        }
+    }
+    ```
+
+
+
 
 
 
