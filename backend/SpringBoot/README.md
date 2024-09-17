@@ -196,7 +196,7 @@ This collection method of separating the Student, StudentService, and StudentCon
 
 While `this.studentService = new StudentService();` works we should avoid using this approach and instead use dependency injections. Dependency injections are easier to test, and properly manages the lifecycle of `@Autowired` (annotation for dependency injection) objects. Spring handles the creation, initialization, and destruction of these objects so you don't need to manually do these things. 
 
-Implementing dependency injections is really easy. Place the annotation @Autowired on top of the constructor and replace `this.studentService = new StudentService();` with `this.student = studentService;`. This will allow Spring to automatically instantiate the `@Component`s.
+Implementing dependency injections is really easy. Place the annotation @Autowired on top of the constructor and replace `this.studentService = new StudentService();` with `this.student = studentService;`. This will allow Spring to automatically instantiate the @Components.
 
 > @Service is the same thing as @Component. It's used over component for semantics only. 
 
@@ -236,10 +236,10 @@ Implementing dependency injections is really easy. Place the annotation @Autowir
 This shows how you can use optional variables to get different data. Use these examples to try it out.
 
 
-http://localhost:8080/api/v1/student should return all students.
-http://localhost:8080/api/v1/student?name=John should return all students named John.
-http://localhost:8080/api/v1/student?age=20 should return all 20 year old students. 
-http://localhost:8080/api/v1/student?name=Jane&age=21 should return all 21 year old students named Jane.
+http://localhost:8080/api/v1/student should return all students. \\
+http://localhost:8080/api/v1/student?name=John should return all students named John. \\
+http://localhost:8080/api/v1/student?age=20 should return all 20 year old students. \\
+http://localhost:8080/api/v1/student?name=Jane&age=21 should return all 21 year old students named Jane. \\
 
 If these examples don't work you may need to edit your xml file. Try adding this in your build section.
 
@@ -270,8 +270,8 @@ There's so much more to Spring Boot, especially for database access and manageme
 
 ## Sources: 
 
-This is the **[video where I obtained the example](https://www.youtube.com/watch?v=9SGDpanrc8U)**.
+This is the **[video where I obtained the example](https://www.youtube.com/watch?v=9SGDpanrc8U)**. \\
 
-**[This tutorial](https://www.javatpoint.com/spring-boot-tutorial)** showed me the benefits of using Spring Boot.
+**[This tutorial](https://www.javatpoint.com/spring-boot-tutorial)** showed me the benefits of using Spring Boot. \\
 
 https://start.spring.io/ is the initializer for spring.
