@@ -88,25 +88,25 @@ In this example we will create a student class to return.
     private LocalDate dob;
     private Integer age;
 ```
-> Pro tip highlight the code above and hit the lightbulb to generate the getters, setters, and constructors on vscode. Use the code menu if you're on IntelliJ.
+> Pro tip, highlight the code above and hit the lightbulb to generate the getters, setters, and constructors on vscode. Use the code menu if you're on IntelliJ.
 
 Now we can change our endpoint to return a custom object. Change the `List<String>` into a `List<Student>` in our demoApplication class.
 
 Replace the "Hello World!" Strings with a new Student.
 
 ```
-	@GetMapping
-	public List<Student> hello() {
-		return List.of(
-			new Student(
-				1L, 
-				"John",
-				"johnsmith@gmail.com",
-				LocalDate.of(2005, 1, 10),
-				19
-			)		
-		);
-	}
+@GetMapping
+public List<Student> hello() {
+    return List.of(
+        new Student(
+            1L, 
+            "John",
+            "johnsmith@gmail.com",
+            LocalDate.of(2005, 1, 10),
+            19
+        )		
+    );
+}
 ```
 
 Awesome! Your output should look like a JSON of a student object.
@@ -124,22 +124,22 @@ Finally change hello() to getStudents() since thats the correct nomenclature.
 New StudentController class: 
 
 ```
-    @RestController
-    @RequestMapping(path = "api/v1/student")
-    public class StudentController {
-        @GetMapping
-        public List<Student> getStudents() {
-            return List.of(
-                new Student(
-                    1L, 
-                    "John",
-                    "johnsmith@gmail.com",
-                    LocalDate.of(2005, 1, 10),
-                    19
-                )		
-            );
-        }
+@RestController
+@RequestMapping(path = "api/v1/student")
+public class StudentController {
+    @GetMapping
+    public List<Student> getStudents() {
+        return List.of(
+            new Student(
+                1L, 
+                "John",
+                "johnsmith@gmail.com",
+                LocalDate.of(2005, 1, 10),
+                19
+            )		
+        );
     }
+}
 ```
 
 Now when we run our demo application we can type `http://localhost:8080/api/v1/student` into our browser to get the same output.
@@ -203,35 +203,35 @@ Implementing dependency injections is really easy. Place the annotation @Autowir
 
 ## Using optional parameters 
 
-    An advantage of Spring Boot is it can read variables in the URL it is given. For example if we want to get certain students instead of all of our students we can use this modified Student controller getStudents() to filter our students collected if we want.
+An advantage of Spring Boot is it can read variables in the URL it is given. For example if we want to get certain students instead of all of our students we can use this modified Student controller getStudents() to filter our students collected if we want.
 
-    @RequestParam is used to define query parameters. required = false makes these parameters optional. If an optional parameter is not provided it will default to null.
+@RequestParam is used to define query parameters. required = false makes these parameters optional. If an optional parameter is not provided it will default to null.
 
-    ```
-    @GetMapping
-    public List<Student> getStudents(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) Integer age) {
-        return studentService.getStudents(name, age);
-    }
-    ``` 
+```
+@GetMapping
+public List<Student> getStudents(
+        @RequestParam(required = false) String name,
+        @RequestParam(required = false) Integer age) {
+    return studentService.getStudents(name, age);
+}
+``` 
 
-    For the example modify your Student service to the following. This is just to show the example, you don't need to know how every method works.
+For the example modify your Student service to the following. This is just to show the example, you don't need to know how every method works.
 
-    ```
-        private List<Student> students = List.of(
-            new Student(1L, "John", "johnsmith@gmail.com", LocalDate.of(2005, 1, 10), 19),
-            new Student(2L, "Jane", "janedoe@gmail.com", LocalDate.of(2003, 5, 15), 21),
-            new Student(3L, "Mike", "mikejones@gmail.com", LocalDate.of(2004, 8, 20), 20)
-    );
+```
+    private List<Student> students = List.of(
+        new Student(1L, "John", "johnsmith@gmail.com", LocalDate.of(2005, 1, 10), 19),
+        new Student(2L, "Jane", "janedoe@gmail.com", LocalDate.of(2003, 5, 15), 21),
+        new Student(3L, "Mike", "mikejones@gmail.com", LocalDate.of(2004, 8, 20), 20)
+);
 
-    public List<Student> getStudents(String name, Integer age) {
-        return students.stream()
-                .filter(student -> (name == null || student.getName().equalsIgnoreCase(name)) &&
-                                   (age == null || student.getAge().equals(age)))
-                .collect(Collectors.toList());
-    }
-    ```
+public List<Student> getStudents(String name, Integer age) {
+    return students.stream()
+            .filter(student -> (name == null || student.getName().equalsIgnoreCase(name)) &&
+                                (age == null || student.getAge().equals(age)))
+            .collect(Collectors.toList());
+}
+```
 
 This shows how you can use optional variables to get different data. Use these examples to try it out.
 
